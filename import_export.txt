@@ -1,0 +1,27 @@
+import os
+import shutil
+import datetime
+
+import_path = "C:\\Users\\Mishish\\Desktop\\import"  #от куда
+export_path = "C:\\Users\\Mishish\\Desktop\\export"  # куда
+
+start_time = datetime.datetime.now(tz=None)
+
+"""
+Копируте файлы в папку
+"""
+
+paths = os.listdir(import_path)
+for path in paths:
+    if path in os.listdir(export_path):
+        print(f"File in directory {path}")
+    elif not path in os.listdir(export_path):
+        shutil.copytree(import_path, export_path, symlinks=True, dirs_exist_ok=True)
+
+print(f"\nFile Downloads")
+print(datetime.datetime.now() - start_time)
+"""
+Перемещает файлы в папку
+"""
+
+
